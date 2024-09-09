@@ -19,4 +19,5 @@ def find_max_value(arr):
 my_array = [8, 1, -6, 9, 15, 7, 2]
 
 # Call the function
-find_max_value(my_array)
+final_value = find_max_value(my_array)
+print(final_value)
