@@ -1,21 +1,21 @@
-# Initialize variables
+# Initialize an empty list to store the integers
 numbers = []
-total = 0
 
-while True:
-    # Prompt the user for a number
-    num = int(input("Enter a positive integer (negative to stop): "))
-    
-    # Check if the number is negative
-    if num < 0:
-        break
-    
-    # Add the number to the list
-    numbers.append(num)
+# Loop to get 10 positive integers from the user
+for i in range(10):
+    while True:
+        try:
+            num = int(input(f"Enter positive integer {i+1}: "))
+            if num > 0:
+                numbers.append(num)
+                break
+            else:
+                print("Please enter a positive integer.")
+        except ValueError:
+            print("That's not a valid integer. Try again.")
 
-# Calculate and print the average if numbers were entered
-if numbers:
-    average = sum(numbers) / len(numbers)
-    print(f"The average of the entered numbers is: {average:.2f}")
-else:
-    print("No positive numbers were entered.")
+# Calculate the total
+total = sum(numbers)
+
+# Output the total with a meaningful message
+print(f"\nThe sum of the ten positive integers is: {total}")

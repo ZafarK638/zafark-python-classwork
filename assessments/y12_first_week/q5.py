@@ -1,23 +1,21 @@
-def find_max_value(arr):
-    # Check if the array is not empty
-    if not arr:
-        print("The array is empty.")
-        return
-    
-    # Initialize the max_value with the first element
-    max_value = arr[0]
-    
-    # Iterate through the array to find the maximum value
-    for num in arr:
-        if num > max_value:
-            max_value = num
-    
-    # Output the highest value
-    return max_value
+# Initialize variables
+numbers = []
+total = 0
 
-# Example array
-my_array = [8, 1, -6, 9, 15, 7, 2]
+while True:
+    # Prompt the user for a number
+    num = int(input("Enter a positive integer (negative to stop): "))
+    
+    # Check if the number is negative
+    if num < 0:
+        break
+    
+    # Add the number to the list
+    numbers.append(num)
 
-# Call the function
-final_value = find_max_value(my_array)
-print(final_value)
+# Calculate and print the average if numbers were entered
+if numbers:
+    average = sum(numbers) / len(numbers)
+    print(f"The average of the entered numbers is: {average:.2f}")
+else:
+    print("No positive numbers were entered.")
