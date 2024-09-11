@@ -1,0 +1,6 @@
+user_pounds = float(input("Please enter a value of pounds: "))
+user_kilos = float(input("Please enter a value of kilos: "))
+final_pounds = float(user_kilos * 2.20462)
+final_kilos = float(user_pounds * 0.453592)
+print(user_kilos, "kilos in pounds is: ", final_pounds," pounds")
+print(user_pounds, "pounds in kilos is: ", final_kilos, " kilos")
