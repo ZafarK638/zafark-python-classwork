@@ -1,0 +1,15 @@
+body {
+    background-color: lightGreen;
+}
+
+p.bold {
+    font-weight: bold
+}
+
+h1 {
+    text-align: center;
+}
+
+li {
+    color: green;
+}
