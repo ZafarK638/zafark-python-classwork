@@ -1,3 +1,4 @@
+#SRC - Make sure you are using the coding conventions, i.e. #end if
 age = int(input("Please enter your age: "))
 
 if age > 10:
@@ -7,6 +8,7 @@ if age > 10:
         print("Invalid input: enter a value from 11 to 18")
 else: 
     print("Invalid input: enter a value from 11 to 18")
+#end if
 
 
 
