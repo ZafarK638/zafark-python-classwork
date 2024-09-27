@@ -1,4 +1,4 @@
 import lib_module
-print("My main program.")
+print("My Main Program.")
 
 lib_module.message()

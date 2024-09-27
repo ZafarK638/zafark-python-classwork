@@ -1,4 +1,11 @@
 def message():
-    print("Hello World")
+    print("My First Library")
 
-message()
+
+def main():
+    print("This is my main bit of code.")
+    message()
+
+
+if __name__ == '__main__':
+    message()
