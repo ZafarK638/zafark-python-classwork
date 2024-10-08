@@ -33,7 +33,7 @@ clock = pygame.time.Clock()
 fps_limit = 60
 
 # Circle properties
-radius = 20  # Radius of the circle (the "sun")
+radius = 20  # Radius of the sun
 x_pos = 0  # Start at the left of the screen
 y_pos = height // 2  # Start at the vertical center of the screen
 
@@ -83,13 +83,13 @@ while not gameOver:
     # --- Drawing code
     pygame.draw.circle(screen, sun_color, [int(x_pos), int(y_pos)], radius)
 
-    box_height = 50
-    pygame.draw.rect(screen, GREEN, [0, height - box_height, width, box_height])
+    ground_height = 50
+    pygame.draw.rect(screen, GREEN, [0, height - ground_height, width, ground_height])
 
-    small_box_size = 50  
-    small_box_x = (width - small_box_size) // 2  
-    small_box_y = (height - box_height + (box_height - small_box_size) // 2) - box_height
-    pygame.draw.rect(screen, BROWN, [small_box_x, small_box_y, small_box_size, small_box_size])
+    house_size = 50  
+    house_x = (width - house_size) // 2  
+    house_y = (height - ground_height + (ground_height - house_size) // 2) - ground_height
+    pygame.draw.rect(screen, BROWN, [house_x, house_y, house_size, house_size])
 
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
