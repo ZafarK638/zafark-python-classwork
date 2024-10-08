@@ -21,6 +21,7 @@ gameOver = False
 
 # Used to manage how fast the screen updates
 clock = pygame.time.Clock()
+fps_limit = 60
 x_pos = 0
 y_pos = 0
 radius = 5
@@ -67,7 +68,7 @@ while not gameOver:
     pygame.display.flip()
 
     # --- Limit to 60 frames per second
-    clock.tick(60)
+    clock.tick(fps_limit)
 
 # Close the window and quit.
 pygame.quit()
