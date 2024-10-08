@@ -23,6 +23,7 @@ gameOver = False
 clock = pygame.time.Clock()
 x_pos = 0
 y_pos = 0
+radius = 5
 
 
 # -------- Main Program Loop -----------
@@ -43,6 +44,11 @@ while not gameOver:
         y_pos = -50
     else: 
         y_pos += 9
+    
+    if radius > 50:
+        radius = 5
+    else:
+        radius += 1
 
     # --- Screen-clearing code goes here
 
@@ -54,8 +60,7 @@ while not gameOver:
     screen.fill(BLUE)
 
     # --- Drawing code should go here
-    pygame.draw.circle(screen, RED, [x_pos,y_pos,0,0,5]) #<--Need to go over this-->
-
+    pygame.draw.circle(screen, RED, [x_pos,y_pos],50)
 
 
     # --- Go ahead and update the screen with what we've drawn.

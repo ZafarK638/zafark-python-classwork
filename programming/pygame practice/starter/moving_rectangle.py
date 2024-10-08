@@ -37,12 +37,12 @@ while not gameOver:
     if x_pos > 700:
         x_pos = -50
     else: 
-        x_pos += 3
+        x_pos += 2
 
     if y_pos > 500:
         y_pos = -50
     else: 
-        y_pos += 9
+        y_pos += 5
 
     # --- Screen-clearing code goes here
 
