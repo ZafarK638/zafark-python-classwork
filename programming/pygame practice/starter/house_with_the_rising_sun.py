@@ -6,10 +6,14 @@ WHITE = (255, 255, 255)
 GREEN = (0, 255, 0)
 RED = (255, 0, 0)
 BLUE = (0, 0, 255)
+BROWN = (139, 69, 19)
+
+# Extra colours
 sky_blue = (135, 206, 235)
 night_sky = (0, 0, 0)
 col_sun = (255, 255, 0)
 col_moon = (192, 192, 192)
+
 
 pygame.init()
 
@@ -78,6 +82,14 @@ while not gameOver:
 
     # --- Drawing code
     pygame.draw.circle(screen, sun_color, [int(x_pos), int(y_pos)], radius)
+
+    box_height = 50
+    pygame.draw.rect(screen, GREEN, [0, height - box_height, width, box_height])
+
+    small_box_size = 50  
+    small_box_x = (width - small_box_size) // 2  
+    small_box_y = (height - box_height + (box_height - small_box_size) // 2) - 50
+    pygame.draw.rect(screen, BROWN, [small_box_x, small_box_y, small_box_size, small_box_size])
 
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
