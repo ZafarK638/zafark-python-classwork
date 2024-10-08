@@ -1,5 +1,4 @@
 import pygame
-import math
 
 # Define some colors
 BLACK = (0, 0, 0)
@@ -7,11 +6,17 @@ WHITE = (255, 255, 255)
 GREEN = (0, 255, 0)
 RED = (255, 0, 0)
 BLUE = (0, 0, 255)
+sky_blue = (135, 206, 235)
+night_sky = (0, 0, 0)
+col_sun = (255, 255, 0)
+col_moon = (192, 192, 192)
 
 pygame.init()
 
 # Set the width and height of the screen [width, height]
-size = (700, 500)
+width = 700
+height = 500
+size = (width, height)
 screen = pygame.display.set_mode(size)
 
 pygame.display.set_caption("The House with the Rising Sun")
@@ -22,47 +27,57 @@ gameOver = False
 # Used to manage how fast the screen updates
 clock = pygame.time.Clock()
 fps_limit = 60
-x_pos = 0
-y_pos = 0
-radius = 5
 
+# Circle properties
+radius = 20  # Radius of the circle (the "sun")
+x_pos = 0  # Start at the left of the screen
+y_pos = height // 2  # Start at the vertical center of the screen
 
-# -------- Main Program Loop -----------
+x_speed = 2  # Move to the right
+max_height = 100  # The highest point of the arc
+
+# Initialize the current phase of the sky
+is_daytime = True  # Start with daytime
+
+# -------- Main Program Loop ----------- 
 while not gameOver:
     # --- Main event loop
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             gameOver = True
 
-    # --- Game logic should go here
-
-    if x_pos > 700:
-        x_pos = -50
-    else: 
-        x_pos += 3
-
-    if y_pos > 500:
-        y_pos = -50
-    else: 
-        y_pos += 9
+    # --- Game logic for smooth rising and setting sun (arc motion)
     
-    if radius > 50:
-        radius = 5
-    else:
-        radius += 1
+    x_pos += x_speed  # Move right
+    
+    # Calculate the distance from the center of the screen (horizontally)
+    distance_from_center = abs(x_pos - width // 2)
 
-    # --- Screen-clearing code goes here
+    # Create a smooth arc using a parabolic-like effect
+    # The farther x_pos is from the center, the lower the y_pos
+    y_pos = height // 2 - ((1 - (distance_from_center / (width // 2)) ** 2) * max_height)
 
-    # Here, we clear the screen to white. Don't put other drawing commands
-    # above this, or they will be erased with this command.
+    # --- Change colors based on position
+    if x_pos - radius >= width:  # Check if it reaches the right edge of the screen
+        # Reset to the left starting position for the next loop
+        x_pos = 0
+        
+        # Change the phase of the sky after a complete rotation
+        is_daytime = not is_daytime  # Toggle between day and night
 
-    # If you want a background image, replace this clear with blit'ing the
-    # background image.
-    screen.fill(BLUE)
+    # Set background color and sun color based on the phase
+    if is_daytime:  # Daytime
+        background_color = sky_blue
+        sun_color = col_sun
+    else:  # Nighttime
+        background_color = night_sky
+        sun_color = col_moon
 
-    # --- Drawing code should go here
-    pygame.draw.circle(screen, RED, [x_pos,y_pos],50)
+    # --- Screen-clearing code
+    screen.fill(background_color)
 
+    # --- Drawing code
+    pygame.draw.circle(screen, sun_color, [int(x_pos), int(y_pos)], radius)
 
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
