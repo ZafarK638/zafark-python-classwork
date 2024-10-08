@@ -88,7 +88,7 @@ while not gameOver:
 
     small_box_size = 50  
     small_box_x = (width - small_box_size) // 2  
-    small_box_y = (height - box_height + (box_height - small_box_size) // 2) - 50
+    small_box_y = (height - box_height + (box_height - small_box_size) // 2) - box_height
     pygame.draw.rect(screen, BROWN, [small_box_x, small_box_y, small_box_size, small_box_size])
 
     # --- Go ahead and update the screen with what we've drawn.
