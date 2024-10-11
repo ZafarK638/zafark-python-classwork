@@ -57,17 +57,15 @@ while not gameOver:
     # Calculate the distance from the center of the screen (horizontally)
     distance_from_center = abs(x_pos - width // 2)
 
-    # Create a smooth arc using a parabolic-like effect
     # The farther x_pos is from the center, the lower the y_pos
     y_pos = height // 2 - ((1 - (distance_from_center / (width // 2)) ** 2) * max_height)
 
     # --- Change colors based on position
-    if x_pos - radius >= width:  # Check if it reaches the right edge of the screen
-        # Reset to the left starting position for the next loop
+    if x_pos - radius >= width: 
         x_pos = 0
         
         # Change the phase of the sky after a complete rotation
-        is_daytime = not is_daytime  # Toggle between day and night
+        is_daytime = not is_daytime  
 
     # Set background color and sun color based on the phase
     if is_daytime:  # Daytime

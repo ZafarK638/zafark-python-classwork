@@ -5,7 +5,6 @@ BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 GREEN = (0, 255, 0)
 RED = (255, 0, 0)
-BLUE = (0, 0, 255)
 
 pygame.init()
 
@@ -13,16 +12,13 @@ pygame.init()
 size = (700, 500)
 screen = pygame.display.set_mode(size)
 
-pygame.display.set_caption("Moving Rectangle")
+pygame.display.set_caption("My Game")
 
 # Loop until the user clicks the close button.
 gameOver = False
 
 # Used to manage how fast the screen updates
 clock = pygame.time.Clock()
-x_pos = 0
-y_pos = 0
-
 
 # -------- Main Program Loop -----------
 while not gameOver:
@@ -33,16 +29,6 @@ while not gameOver:
 
     # --- Game logic should go here
 
-    if x_pos > 700:
-        x_pos = -50
-    else: 
-        x_pos += 2
-
-    if y_pos > 500:
-        y_pos = -50
-    else: 
-        y_pos += 5
-
     # --- Screen-clearing code goes here
 
     # Here, we clear the screen to white. Don't put other drawing commands
@@ -50,12 +36,9 @@ while not gameOver:
 
     # If you want a background image, replace this clear with blit'ing the
     # background image.
-    screen.fill(GREEN)
+    screen.fill(WHITE)
 
     # --- Drawing code should go here
-    pygame.draw.rect(screen, RED, [x_pos,y_pos,50,50])
-
-
 
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()

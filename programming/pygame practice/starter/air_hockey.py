@@ -13,7 +13,7 @@ pygame.init()
 size = (700, 500)
 screen = pygame.display.set_mode(size)
 
-pygame.display.set_caption("Moving Rectangle")
+pygame.display.set_caption("Air Hockey")
 
 # Loop until the user clicks the close button.
 gameOver = False
