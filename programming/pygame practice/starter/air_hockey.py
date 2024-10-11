@@ -10,8 +10,8 @@ BLUE = (0, 0, 255)
 pygame.init()
 
 # Set the width and height of the screen [width, height]
-width = 1500
-height = 800
+width = 1000
+height = 700
 size = (width, height)
 screen = pygame.display.set_mode(size)
 
@@ -26,13 +26,17 @@ x_pos = 0
 y_pos = 0
 velocity_x = 1
 velocity_y = 1
-square_width = 50
-square_height = 50
+square_width = 15
+square_height = 15
+
 p1_x = 50
 p1_y = height/2
 
 p2_x = width - p1_x
 p2_y = height/2
+
+paddle_height = 100
+paddle_width = 20
 
 move_up_p1 = False
 move_down_p1 = False
@@ -96,39 +100,39 @@ while not gameOver:
 
     # --- Player 1 code
     if move_up_p1:
-        if p1_y >= height:
-            p1_y += -1
-        elif p1_y <= 0:
-            p1_y += 1
+        if p1_y >= (height-paddle_height):
+            p1_y += -3
+        elif p1_y <= paddle_height:
+            p1_y += 3
         else:
-            p1_y += -1
+            p1_y += -3
 
 
     if move_down_p1:
-        if p1_y >= height:
-            p1_y += -1
-        elif p1_y <= 0:
-            p1_y += 1
+        if p1_y >= (height-paddle_height):
+            p1_y += -3
+        elif p1_y <= paddle_height:
+            p1_y += 3
         else:
-            p1_y += 1
+            p1_y += 3
 
     # --- Player 2 controls
     if move_up_p2:
         if p2_y >= height:
-            p2_y += -1
+            p2_y += -3
         elif p2_y <= 0:
-            p2_y += 1
+            p2_y += 3
         else:
-            p2_y += -1
+            p2_y += -3
 
 
     if move_down_p2:
         if p2_y >= height:
-            p2_y += -1
+            p2_y += -3
         elif p2_y <= 0:
-            p2_y += 1
+            p2_y += 3
         else:
-            p2_y += 1
+            p2_y += 3
 
     # --- Screen-clearing code goes here
 
@@ -145,10 +149,10 @@ while not gameOver:
     pygame.draw.rect(screen, RED, [x_pos,y_pos,square_width,square_height])
 
     # --- Player one 
-    pygame.draw.rect(screen, BLACK, [p1_x, p1_y, 20, 100])
+    pygame.draw.rect(screen, BLACK, [p1_x, p1_y, paddle_width, paddle_height])
 
     # --- Player two
-    pygame.draw.rect(screen, BLACK, [p2_x, p2_y, 20, 100])
+    pygame.draw.rect(screen, BLACK, [p2_x, p2_y, paddle_width, paddle_height])
 
 
     # --- Go ahead and update the screen with what we've drawn.
