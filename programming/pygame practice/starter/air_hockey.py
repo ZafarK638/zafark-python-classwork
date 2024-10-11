@@ -10,7 +10,9 @@ BLUE = (0, 0, 255)
 pygame.init()
 
 # Set the width and height of the screen [width, height]
-size = (700, 500)
+width = 700
+height = 500
+size = (width, height)
 screen = pygame.display.set_mode(size)
 
 pygame.display.set_caption("Air Hockey")
@@ -22,7 +24,10 @@ gameOver = False
 clock = pygame.time.Clock()
 x_pos = 0
 y_pos = 0
-
+velocity_x = 1
+velocity_y = 1
+square_width = 50
+square_height = 50
 
 # -------- Main Program Loop -----------
 while not gameOver:
@@ -33,15 +38,26 @@ while not gameOver:
 
     # --- Game logic should go here
 
-    if x_pos > 700:
-        x_pos = -50
+    if x_pos > (width-square_width):
+        x_pos += -1
+        velocity_x *= -1
+    elif x_pos < 0: 
+        x_pos += 1
+        velocity_x *= -1
     else: 
-        x_pos += 2
+        x_pos += 1 * (int(velocity_x))
 
-    if y_pos > 500:
-        y_pos = -50
+
+
+    if y_pos > (height-square_height):
+        y_pos += -1
+        velocity_y *= -1
+    elif y_pos < 0:
+        y_pos += 1
+        velocity_y *= -1
     else: 
-        y_pos += 5
+        y_pos += 1 * (int(velocity_y))
+
 
     # --- Screen-clearing code goes here
 
@@ -53,7 +69,8 @@ while not gameOver:
     screen.fill(GREEN)
 
     # --- Drawing code should go here
-    pygame.draw.rect(screen, RED, [x_pos,y_pos,50,50])
+
+    pygame.draw.rect(screen, RED, [x_pos,y_pos,square_width,square_height])
 
 
 
