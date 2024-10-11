@@ -10,8 +10,8 @@ BLUE = (0, 0, 255)
 pygame.init()
 
 # Set the width and height of the screen [width, height]
-width = 700
-height = 500
+width = 1500
+height = 800
 size = (width, height)
 screen = pygame.display.set_mode(size)
 
@@ -39,24 +39,24 @@ while not gameOver:
     # --- Game logic should go here
 
     if x_pos > (width-square_width):
-        x_pos += -1
+        x_pos += -2
         velocity_x *= -1
     elif x_pos < 0: 
-        x_pos += 1
+        x_pos += 2
         velocity_x *= -1
     else: 
-        x_pos += 1 * (int(velocity_x))
+        x_pos += 2 * (int(velocity_x))
 
 
 
     if y_pos > (height-square_height):
-        y_pos += -1
+        y_pos += -2
         velocity_y *= -1
     elif y_pos < 0:
-        y_pos += 1
+        y_pos += 2
         velocity_y *= -1
     else: 
-        y_pos += 1 * (int(velocity_y))
+        y_pos += 2 * (int(velocity_y))
 
 
     # --- Screen-clearing code goes here
