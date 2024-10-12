@@ -67,6 +67,8 @@ while not gameOver:
                 move_up_p2 = True
             if event.key == pygame.K_DOWN:
                 move_down_p2 = True
+            
+            # --- Fullscreen
             if event.key == pygame.K_SPACE:
                 screen = pygame.display.set_mode((size), pygame.FULLSCREEN)
             if event.key == pygame.K_RSHIFT or event.key == pygame.K_LSHIFT:
