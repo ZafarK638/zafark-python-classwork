@@ -95,7 +95,7 @@ while not gameOver:
         velocity_x *= -1
         multiplier = 1
         multiplier_s = 1
-        
+
 
     # Wall collisions (top and bottom)
     if y_pos <= 0 or y_pos >= (height - square_height):
@@ -190,8 +190,8 @@ while not gameOver:
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
 
-    # --- Limit to 300 frames per second
-    clock.tick(300)
+    # --- Limit to 60 frames per second
+    clock.tick(150)
 
 # Close the window and quit.
 pygame.quit()
