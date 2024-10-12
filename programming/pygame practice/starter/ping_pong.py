@@ -11,8 +11,8 @@ BLUE = (0, 0, 255)
 pygame.init()
 
 # Set the width and height of the screen [width, height]
-width = 1550
-height = 800
+width = 1000
+height = 700
 size = (width, height)
 screen = pygame.display.set_mode(size)
 
@@ -67,6 +67,10 @@ while not gameOver:
                 move_up_p2 = True
             if event.key == pygame.K_DOWN:
                 move_down_p2 = True
+            if event.key == pygame.K_SPACE:
+                screen = pygame.display.set_mode((size), pygame.FULLSCREEN)
+            if event.key == pygame.K_RSHIFT or event.key == pygame.K_LSHIFT:
+                screen = pygame.display.set_mode(size)
 
         if event.type == pygame.KEYUP:
             # --- Player 1 controls
