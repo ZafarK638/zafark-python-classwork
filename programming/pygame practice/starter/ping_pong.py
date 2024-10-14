@@ -87,11 +87,9 @@ while not gameOver:
                 move_down_p2 = False
 
     # --- Game logic should go here
-    multiplier = random.randint(1,3)
-    multiplier_s = random.randint(1,3)
 
-    x_pos += speed*velocity_x*multiplier_s
-    y_pos += speed*velocity_y*multiplier_s
+    x_pos += speed*velocity_x
+    y_pos += speed*velocity_y
 
     # Wall collisions (left and right)
     if x_pos <= 0 or x_pos >= (width - square_width):
@@ -99,16 +97,13 @@ while not gameOver:
         x_pos = (width - square_width) // 2
         y_pos = (height - square_height) // 2
         velocity_x *= -1
-        multiplier = 1
-        multiplier_s = 1
+
 
 
     # Wall collisions (top and bottom)
     if y_pos <= 0 or y_pos >= (height - square_height):
         velocity_y *= -1  # Reverse vertical direction
 
-        if multiplier_s != 1:
-            multiplier_s += -1
 
     # Paddle collisions
 
@@ -118,7 +113,6 @@ while not gameOver:
         if p1_y <= y_pos <= (p1_y + paddle_height):
             velocity_x *= -1  # Reverse horizontal direction
 
-            # Calculate the offset from the center of the paddle
 
 
     # Check collision with Player 2's paddle
@@ -126,7 +120,6 @@ while not gameOver:
         if p2_y <= y_pos <= (p2_y + paddle_height):
             velocity_x *= -1  # Reverse horizontal direction
             
-            # Calculate the offset from the center of the paddle
 
 
 
