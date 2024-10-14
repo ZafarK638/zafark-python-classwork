@@ -87,16 +87,18 @@ while not gameOver:
                 move_down_p2 = False
 
     # --- Game logic should go here
-
-    x_pos += speed*velocity_x
-    y_pos += speed*velocity_y
+    multiplier = random.randint(1,3)
+    x_pos += speed*velocity_x*multiplier
+    y_pos += speed*velocity_y*multiplier
 
     # Wall collisions (left and right)
     if x_pos <= 0 or x_pos >= (width - square_width):
         # Reset the ball to the center
         x_pos = (width - square_width) // 2
         y_pos = (height - square_height) // 2
-        velocity_x *= -1
+        velocity_x = random.randint(-1,1)
+        if velocity_x == 0:
+            velocity_x += 1
 
 
 
