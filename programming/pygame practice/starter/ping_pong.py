@@ -55,8 +55,6 @@ decrease_speed = False
 score_red = 0
 score_blue = 0
 
-
-
 # -------- Main Program Loop -----------
 while not gameOver:
     # --- Main event loop
@@ -137,10 +135,6 @@ while not gameOver:
     if (p2_x - square_width) <= x_pos <= p2_x:
         if p2_y <= y_pos <= (p2_y + paddle_height):
             velocity_x *= -1  # Reverse horizontal direction
-            
-
-
-
 
     # --- Player 1 code
     if move_up_p1:
@@ -150,7 +144,6 @@ while not gameOver:
             p1_y += 2
         else:
             p1_y += -2
-
 
     if move_down_p1:
         if p1_y >= (height-paddle_height):
@@ -169,7 +162,6 @@ while not gameOver:
         else:
             p2_y += -2
 
-
     if move_down_p2:
         if p2_y >= (height-paddle_height):
             p2_y += -2
@@ -178,7 +170,6 @@ while not gameOver:
         else:
             p2_y += 2
 
-
     if increase_speed:
         speed += 0.1
     
@@ -186,9 +177,6 @@ while not gameOver:
         speed += -0.1
         if speed <= 0:
             speed = 1
-
-
-
 
     # --- Screen-clearing code goes here
 
@@ -210,15 +198,12 @@ while not gameOver:
     # --- Player two
     pygame.draw.rect(screen, BLUE, [p2_x, p2_y, paddle_width, paddle_height])
 
-
     # --- Display scores
     font = pygame.font.SysFont(None, 32)
     img = font.render(str(score_red), True, RED)
     screen.blit(img, (20, 20))
     img = font.render(str(score_blue), True, BLUE)
     screen.blit(img, (width-20, 20))
-
-
 
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
