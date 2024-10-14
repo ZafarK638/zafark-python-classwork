@@ -119,9 +119,7 @@ while not gameOver:
             velocity_x *= -1  # Reverse horizontal direction
 
             # Calculate the offset from the center of the paddle
-            offset = (y_pos - (p1_y + paddle_height / 2)) / (paddle_height / 2)
-            # Adjust vertical velocity based on the offset
-            velocity_y = offset * multiplier
+
 
     # Check collision with Player 2's paddle
     if (p2_x - square_width) <= x_pos <= p2_x:
@@ -129,9 +127,7 @@ while not gameOver:
             velocity_x *= -1  # Reverse horizontal direction
             
             # Calculate the offset from the center of the paddle
-            offset = (y_pos - (p2_y + paddle_height / 2)) / (paddle_height / 2)
-            # Adjust vertical velocity based on the offset
-            velocity_y = offset * multiplier
+
 
 
 
