@@ -7,6 +7,8 @@ WHITE = (255, 255, 255)
 GREEN = (0, 255, 0)
 RED = (255, 0, 0)
 BLUE = (0, 0, 255)
+PADDLERED = (255,127,127)
+PADDLEBLUE = (173,216,230)
 
 pygame.init()
 
@@ -189,21 +191,21 @@ while not gameOver:
 
     # --- Drawing code should go here
 
-    # --- The bouncy one
+    # --- Ping Pong
     pygame.draw.rect(screen, BLACK, [x_pos,y_pos,square_width,square_height])
 
     # --- Player one 
-    pygame.draw.rect(screen, RED, [p1_x, p1_y, paddle_width, paddle_height])
+    pygame.draw.rect(screen, PADDLERED, [p1_x, p1_y, paddle_width, paddle_height])
 
     # --- Player two
-    pygame.draw.rect(screen, BLUE, [p2_x, p2_y, paddle_width, paddle_height])
+    pygame.draw.rect(screen, PADDLEBLUE, [p2_x, p2_y, paddle_width, paddle_height])
 
     # --- Display scores
     font = pygame.font.SysFont(None, 32)
     img = font.render(str(score_red), True, RED)
     screen.blit(img, (20, 20))
     img = font.render(str(score_blue), True, BLUE)
-    screen.blit(img, (width-20, 20))
+    screen.blit(img, (width-40, 20))
 
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
