@@ -55,6 +55,8 @@ decrease_speed = False
 score_red = 0
 score_blue = 0
 
+
+
 # -------- Main Program Loop -----------
 while not gameOver:
     # --- Main event loop
@@ -112,13 +114,9 @@ while not gameOver:
     if x_pos <= 0 or x_pos >= (width - square_width):
         velocity_x *= -1  
         if x_pos <= 0:
-            score_red += 1
-            scoreR = "Player 2:",score_red
-            print (scoreR)
-        else: 
             score_blue += 1
-            scoreB = "Player 3:",score_blue
-            print (scoreB)
+        else: 
+            score_red += 1
         #end if statement'
 
     # Wall collisions (top and bottom)
@@ -211,6 +209,14 @@ while not gameOver:
 
     # --- Player two
     pygame.draw.rect(screen, BLUE, [p2_x, p2_y, paddle_width, paddle_height])
+
+
+    # --- Display scores
+    font = pygame.font.SysFont(None, 32)
+    img = font.render(str(score_red), True, RED)
+    screen.blit(img, (20, 20))
+    img = font.render(str(score_blue), True, BLUE)
+    screen.blit(img, (width-20, 20))
 
 
 
