@@ -106,7 +106,8 @@ while not gameOver:
                 decrease_speed = False
             if event.key == pygame.K_b:
                 # --- reset speed
-                
+                speed = 1
+                display_speed = 1
 
 
     # --- Game logic should go here
@@ -187,6 +188,9 @@ while not gameOver:
     if increase_speed:
         speed += 0.01
         display_speed += 1
+        if display_speed >= 1000:
+            speed += -0.01
+            display_speed = 1000
     
     if decrease_speed:
         speed += -0.01
