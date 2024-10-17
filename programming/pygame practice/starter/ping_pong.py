@@ -142,6 +142,7 @@ while not gameOver:
     if p1_x <= x_pos <= (p1_x + paddle_width):
         if p1_y <= y_pos <= (p1_y + paddle_height):
             velocity_x *= -1  # Reverse horizontal direction
+            x_pos += 1
 
 
 
@@ -149,6 +150,7 @@ while not gameOver:
     if (p2_x - square_width) <= x_pos <= p2_x:
         if p2_y <= y_pos <= (p2_y + paddle_height):
             velocity_x *= -1  # Reverse horizontal direction
+            x_pos += -1
 
 
     # --- Player 1 code
