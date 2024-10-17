@@ -17,9 +17,6 @@ screen = pygame.display.set_mode(size)
 
 pygame.display.set_caption("Snow")
 
-# Initialise flake variables here to have random initial position:
-# x, y, velocity
-
 
 # Loop until the user clicks the close button.
 gameOver = False
@@ -38,6 +35,8 @@ snow_velocity = 1
 snow_width = 5
 snow_height = 5
 
+# --- Number of flakes
+num_snow = 3
 
 # -------- Main Program Loop -----------
 while not gameOver:
