@@ -36,11 +36,6 @@ snow_width = 5
 snow_height = 5
 
 # --- Number of flakes
-snow_rows = 50
-snow_cols = 3
-snow_arr = [[0 for i in range(snow_cols)] for j in range(snow_rows)]
-
-snow_arr[3][1] = 1
 
 
 # -------- Main Program Loop -----------
