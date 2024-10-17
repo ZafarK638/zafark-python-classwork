@@ -53,6 +53,7 @@ move_down_p2 = False
 
 increase_speed = False
 decrease_speed = False
+display_speed = 1
 
 score_red = 0
 score_blue = 0
@@ -100,11 +101,13 @@ while not gameOver:
             if event.key == pygame.K_DOWN:
                 move_down_p2 = False
             if event.key == pygame.K_m:
-                # speed += 1
                 increase_speed = False
             if event.key == pygame.K_n:
-                # speed += -1
                 decrease_speed = False
+            if event.key == pygame.K_b:
+                # --- reset speed
+                
+
 
     # --- Game logic should go here
     x_pos += speed*velocity_x
@@ -112,16 +115,24 @@ while not gameOver:
 
     # Wall collisions (left and right)
     if x_pos <= 0 or x_pos >= (width - square_width):
-        velocity_x *= -1  
+        velocity_x *= -1 
         if x_pos <= 0:
             score_blue += 1
+            x_pos = (p1_x)+2  
+            y_pos = (p1_y) 
         else: 
             score_red += 1
-        #end if statement'
+            x_pos = (p2_x)-2  
+            y_pos = (p2_y) 
+        #end if statement
+        x_pos += (50*velocity_x)
+
+
 
     # Wall collisions (top and bottom)
     if y_pos <= 0 or y_pos >= (height - square_height):
         velocity_y *= -1  # Reverse vertical direction
+        
 
 
     # Paddle collisions
@@ -137,6 +148,7 @@ while not gameOver:
     if (p2_x - square_width) <= x_pos <= p2_x:
         if p2_y <= y_pos <= (p2_y + paddle_height):
             velocity_x *= -1  # Reverse horizontal direction
+
 
     # --- Player 1 code
     if move_up_p1:
@@ -173,12 +185,15 @@ while not gameOver:
             p2_y += 2
 
     if increase_speed:
-        speed += 0.1
+        speed += 0.01
+        display_speed += 1
     
     if decrease_speed:
-        speed += -0.1
-        if speed <= 0:
+        speed += -0.01
+        display_speed += -1
+        if speed <= 1:
             speed = 1
+            display_speed = 1
 
     # --- Screen-clearing code goes here
 
@@ -206,6 +221,10 @@ while not gameOver:
     screen.blit(img, (20, 20))
     img = font.render(str(score_blue), True, BLUE)
     screen.blit(img, (width-40, 20))
+    img = font.render(str("Ball Speed:"), True, GREEN)
+    screen.blit(img, ((width/2)-50, 20))
+    img = font.render(str(display_speed), True, GREEN)
+    screen.blit(img, ((width/2), 40))
 
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
