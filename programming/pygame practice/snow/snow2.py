@@ -24,13 +24,6 @@ gameOver = False
 # Used to manage how fast the screen updates
 clock = pygame.time.Clock()
 
-# --- Snow position
-snow_x = random.randint(1,width)
-snow_y = random.randint(1,height)
-
-# --- Snow speed
-snow_velocity = 2
-
 # --- Snow size
 snow_width = 5
 snow_height = 5
@@ -44,7 +37,7 @@ snow_arr[3][1] = 1
 for snow_rows in range(snow_rows):
     snow_arr[snow_rows][0] = random.randint(1,width)
     snow_arr[snow_rows][1] = random.randint(1,width)
-    snow_arr[snow_rows][2] = 1
+    snow_arr[snow_rows][2] = 2
 
 
 # -------- Main Program Loop -----------
@@ -57,11 +50,11 @@ while not gameOver:
     # --- Game logic should go here
     
     # --- Snow movement
-    if snow_y <= height:
-        snow_y += 1*snow_velocity
+    if snow_arr[snow_rows][0] <= height:
+        snow_arr[snow_rows][0] += 1*snow_arr[snow_rows][2]
     else:
-        snow_y = 0
-        snow_x = random.randint(1,width)
+        snow_arr[snow_rows][0] = 0
+        snow_arr[snow_rows][1] = random.randint(1,width)
 
 
 
@@ -70,7 +63,7 @@ while not gameOver:
     # Here, we clear the screen to white. Don't put other drawing commands
     # above this, or they will be erased with this command.
 
-    pygame.draw.rect(screen, WHITE, [snow_x,snow_y,snow_width,snow_height])
+    pygame.draw.rect(screen, WHITE, [snow_arr[snow_rows][1],snow_arr[snow_rows][0],snow_width,snow_height])
 
     # If you want a background image, replace this clear with blit'ing the
     # background image.
