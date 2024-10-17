@@ -10,7 +10,9 @@ WHITE = 0xFFFFFF
 pygame.init()
 
 # Set the width and height of the screen [width, height]
-size = (700, 500)
+width = 700
+height = 500
+size = (width, height)
 screen = pygame.display.set_mode(size)
 
 pygame.display.set_caption("Snow")
@@ -20,17 +22,29 @@ pygame.display.set_caption("Snow")
 
 
 # Loop until the user clicks the close button.
-done = False
+gameOver = False
 
 # Used to manage how fast the screen updates
 clock = pygame.time.Clock()
 
+# --- Snow position
+snow_x = random.randint(1,width)
+snow_y = 0
+
+# --- Snow speed
+snow_velocity = 1
+
+# --- Snow size
+snow_width = 5
+snow_height = 5
+
+
 # -------- Main Program Loop -----------
-while not done:
+while not gameOver:
     # --- Main event loop
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            done = True
+            gameOver = True
 
     # --- Game logic should go here
 

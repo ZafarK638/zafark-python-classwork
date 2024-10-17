@@ -25,8 +25,7 @@ gameOver = False
 
 # Used to manage how fast the screen updates
 clock = pygame.time.Clock()
-x_pos = 0
-y_pos = 0
+
 velocity_x = 1
 velocity_y = 1
 speed = 1
