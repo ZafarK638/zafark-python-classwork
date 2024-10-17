@@ -47,7 +47,13 @@ while not gameOver:
             gameOver = True
 
     # --- Game logic should go here
-
+    
+    # --- Snow movement
+    if snow_y <= height:
+        snow_y += 1*snow_velocity
+    else:
+        snow_y = 0
+        snow_x = random.randint(1,width)
 
 
 
@@ -55,6 +61,8 @@ while not gameOver:
     screen.fill(BLACK)
     # Here, we clear the screen to white. Don't put other drawing commands
     # above this, or they will be erased with this command.
+
+    pygame.draw.rect(screen, WHITE, [snow_x,snow_y,snow_width,snow_height])
 
     # If you want a background image, replace this clear with blit'ing the
     # background image.
