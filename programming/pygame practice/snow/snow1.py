@@ -26,17 +26,22 @@ clock = pygame.time.Clock()
 
 # --- Snow position
 snow_x = random.randint(1,width)
-snow_y = 0
+snow_y = random.randint(1,height)
 
 # --- Snow speed
-snow_velocity = 1
+snow_velocity = 2
 
 # --- Snow size
 snow_width = 5
 snow_height = 5
 
 # --- Number of flakes
-num_snow = 3
+snow_rows = 50
+snow_cols = 3
+snow_arr = [[0 for i in range(snow_cols)] for j in range(snow_rows)]
+
+snow_arr[3][1] = 1
+
 
 # -------- Main Program Loop -----------
 while not gameOver:
