@@ -5,7 +5,14 @@ import random
 BLACK = 0x000000
 WHITE = 0xFFFFFF
 
-
+class Flake: # --- This is a record
+    def __init__(self,snow_x, snow_y, vel_range, size) -> None:
+        self.x = snow_x
+        self.y = snow_y
+        self.vel = vel_range
+        self.size = size
+    # --- End fields
+# --- End record
 
 pygame.init()
 
@@ -28,6 +35,9 @@ clock = pygame.time.Clock()
 snow_width = 5
 snow_height = 5
 
+# --- Snow speed
+vel_range = 3
+
 # --- Number of flakes
 snow_rows = 50
 snow_cols = 3
@@ -36,7 +46,7 @@ snow_arr = [[0 for i in range(snow_cols)] for j in range(snow_rows)]
 for snow_rows in range(snow_rows):
     snow_arr[snow_rows][0] = random.randint(1,width)
     snow_arr[snow_rows][1] = random.randint(1,width)
-    snow_arr[snow_rows][2] = 2
+    snow_arr[snow_rows][2] = random.randint(1,vel_range)
 
 
 # -------- Main Program Loop -----------
