@@ -36,7 +36,7 @@ snow_arr = [[0 for i in range(snow_cols)] for j in range(snow_rows)]
 for i in range(snow_rows):
     snow_arr[i][0] = random.randint(1,width)
     snow_arr[i][1] = random.randint(1,height)
-    snow_arr[i][2] = 2
+    snow_arr[i][2] = random.randint(1,3)
 print(snow_arr)
 
 
