@@ -29,7 +29,7 @@ snow_x = random.randint(1,width)
 snow_y = random.randint(1,height)
 
 # --- Snow speed
-snow_velocity = 2
+snow_velocity = 3
 
 # --- Snow size
 snow_width = 5
