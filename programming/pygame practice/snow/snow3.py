@@ -17,8 +17,8 @@ class Flake: # --- This is a record
 pygame.init()
 
 # Set the width and height of the screen [width, height]
-width = 700
-height = 500
+width = 1000
+height = 700
 size = (width, height)
 screen = pygame.display.set_mode(size)
 
