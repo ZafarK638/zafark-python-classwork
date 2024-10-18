@@ -32,13 +32,13 @@ gameOver = False
 clock = pygame.time.Clock()
 
 # --- Number of flakes
-snow_rows = 50
+snow_rows = 500
 snow_arr = [None for j in range(snow_rows)]
 
 for row in range(snow_rows):    
-    speed = random.randint(1,3)
-    size =10-(speed*2)
-    my_flake = Flake(random.randint(1,width), random.randint(1,height), speed, size)
+    flake_speed = random.randint(1,3)
+    flake_size = 5-(flake_speed)
+    my_flake = Flake(random.randint(1,width), random.randint(1,height), flake_speed, flake_size)
     snow_arr[row] = my_flake
 
 
