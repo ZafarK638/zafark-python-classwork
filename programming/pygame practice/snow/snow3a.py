@@ -5,7 +5,14 @@ import random
 BLACK = 0x000000
 WHITE = 0xFFFFFF
 
-
+class Flake: # --- This is a record
+    def __init__(self,snow_x, snow_y, vel_range, snow_size) -> None:
+        self.x = snow_x
+        self.y = snow_y
+        self.vel = vel_range
+        self.size = size
+    # --- End fields
+# --- End record
 
 pygame.init()
 
@@ -24,20 +31,13 @@ gameOver = False
 # Used to manage how fast the screen updates
 clock = pygame.time.Clock()
 
-# --- Snow size
-snow_width = 5
-snow_height = 5
-
 # --- Number of flakes
 snow_rows = 50
-snow_cols = 3
-snow_arr = [[0 for i in range(snow_cols)] for j in range(snow_rows)]
+snow_arr = [None for j in range(snow_rows)]
 
-for i in range(snow_rows):
-    snow_arr[i][0] = random.randint(1,width)
-    snow_arr[i][1] = random.randint(1,height)
-    snow_arr[i][2] = 2
-print(snow_arr)
+for row in range(snow_rows):    
+    my_flake = Flake(random.randint(1,width), random.randint(1,height), random.randint(1,3), 5)
+    snow_arr[row] = my_flake
 
 
 # -------- Main Program Loop -----------
@@ -49,12 +49,17 @@ while not gameOver:
 
     # --- Game logic should go here
     # --- Snow movement
+    # for i in range(snow_rows):
+    #     if snow_arr[i][0] <= height:
+    #         snow_arr[i][0] += 1*snow_arr[i][2]
+    #     else:
+    #         snow_arr[i][0] = 0
+    #         snow_arr[i][1] = random.randint(1,width)
+
     for i in range(snow_rows):
-        if snow_arr[i][0] <= height:
-            snow_arr[i][0] += 1*snow_arr[i][2]
-        else:
-            snow_arr[i][0] = 0
-            snow_arr[i][1] = random.randint(1,width)
+        if snow_arr[i].y > size[1]:
+            snow_arr[i].y = 0
+            snow_arr
 
 
 
@@ -64,7 +69,7 @@ while not gameOver:
     # above this, or they will be erased with this command.
 
     for i in range(snow_rows):
-        pygame.draw.rect(screen, WHITE, [snow_arr[i][1],snow_arr[i][0],snow_width,snow_height])
+        pygame.draw.rect(screen, WHITE, [my_flake.x, my_flake.y, my_flake.size, my_flake.size])
 
     # If you want a background image, replace this clear with blit'ing the
     # background image.
