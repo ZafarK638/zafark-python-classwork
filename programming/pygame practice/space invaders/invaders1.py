@@ -4,6 +4,8 @@ import random
 # Define some colors
 BLACK = 0x000000
 WHITE = 0xFFFFFF
+RED = (255, 0, 0)
+GREEN = (0, 255, 0)
 
 class Invader: # --- This is a record
     def __init__(self,inv_x, inv_y, inv_vel, inv_size) -> None:
@@ -31,15 +33,14 @@ gameOver = False
 # Used to manage how fast the screen updates
 clock = pygame.time.Clock()
 
-# --- Number of flakes
-snow_rows = 500
-snow_arr = [None for j in range(snow_rows)]
+# --- Number of Invaders
+inv_rows = 50
+inv_arr = [None for j in range(inv_rows)]
 
-for row in range(snow_rows):    
-    flake_speed = random.randint(1,3)
-    flake_size = 5-(flake_speed)
-    my_flake = Flake(random.randint(1,width), random.randint(1,height), flake_speed, flake_size)
-    snow_arr[row] = my_flake
+for row in range(inv_rows):    
+    # --- Change the random values to be the positions of the invaders
+    invaders = Invader(random.randint(1,width), random.randint(1,height), 3, 10)
+    inv_arr[row] = invaders
 
 
 # -------- Main Program Loop -----------
@@ -50,13 +51,16 @@ while not gameOver:
             gameOver = True
 
     # --- Game logic should go here
-    # --- Snow movement
-    for i in range(snow_rows):
-        if snow_arr[i].y <= height:
-            snow_arr[i].y += 1*snow_arr[i].vel
+    # --- Invader movement
+
+
+    # --- Change this to be the motion of the invaders
+    for i in range(inv_rows):
+        if inv_arr[i].y <= height:
+            inv_arr[i].y += 1*inv_arr[i].vel
         else:
-            snow_arr[i].y = 0
-            snow_arr[i].x = random.randint(1,width)
+            inv_arr[i].y = 0
+            inv_arr[i].x = random.randint(1,width)
 
 
 
@@ -65,8 +69,8 @@ while not gameOver:
     # Here, we clear the screen to white. Don't put other drawing commands
     # above this, or they will be erased with this command.
 
-    for i in range(snow_rows):
-        pygame.draw.rect(screen, WHITE, [snow_arr[i].x,snow_arr[i].y,snow_arr[i].size,snow_arr[i].size])
+    for i in range(inv_rows):
+        pygame.draw.rect(screen, RED, [inv_arr[i].x,inv_arr[i].y,inv_arr[i].size,inv_arr[i].size])
 
     # If you want a background image, replace this clear with blit'ing the
     # background image.
