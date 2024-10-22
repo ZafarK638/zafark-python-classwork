@@ -1,0 +1,13 @@
+WRITTEN IN PSEUDOCODE
+
+function dequeue
+	if isEmpty then
+		print("Queue empty")
+		item = Null
+	else
+		item = q[front]
+		front = (front + 1) MOD maxSize
+		size = size - 1
+	endif
+	return item
+endfunction
