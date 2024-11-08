@@ -6,3 +6,4 @@ class Cat:
 #end of class
 
 my_cat = Cat("Puss in Boots","Orange")
+print("Program over")
