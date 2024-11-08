@@ -5,13 +5,26 @@ import random
 BLACK = 0x000000
 WHITE = 0xFFFFFF
 
-class Flake: # --- This is a record
-    def __init__(self,snow_x, snow_y, vel_range, snow_size) -> None:
-        self.x = snow_x
-        self.y = snow_y
-        self.vel = vel_range
-        self.size = snow_size
+class Flake: # --- This is a class
+    def __init__(self) -> None:
+        self.x = random.randint(1,width)
+        self.y = random.randint(1,height)
+        self.vel = random.randint(1,3)
+        self.size = 5-self.size
     # --- End fields
+
+    def fall(self):
+        if self.y > height[i]:
+            self.y > 0
+            self.x = random.randint(0,width[0]-1)
+        else:
+            self.y = 0
+            self.x = random.randint(1,width[0]-1)
+
+    def draw(self):
+        pygame.draw.rect(screen, WHITE, [self.x,self.y,self.size,self.size])
+
+
 # --- End record
 
 pygame.init()
@@ -32,14 +45,12 @@ gameOver = False
 clock = pygame.time.Clock()
 
 # --- Number of flakes
-snow_rows = 500
-snow_arr = [None for j in range(snow_rows)]
+number_of_flakes = 500
+flakes = [None for j in range(number_of_flakes)]
 
-for row in range(snow_rows):    
-    flake_speed = random.randint(1,3)
-    flake_size = 5-(flake_speed)
-    my_flake = Flake(random.randint(1,width), random.randint(1,height), flake_speed, flake_size)
-    snow_arr[row] = my_flake
+for row in range(number_of_flakes):    
+    my_flake = flakes
+    number_of_flakes[row] = my_flake
 
 
 # -------- Main Program Loop -----------
@@ -51,12 +62,8 @@ while not gameOver:
 
     # --- Game logic should go here
     # --- Snow movement
-    for i in range(snow_rows):
-        if snow_arr[i].y <= height:
-            snow_arr[i].y += 1*snow_arr[i].vel
-        else:
-            snow_arr[i].y = 0
-            snow_arr[i].x = random.randint(1,width)
+    for i in range(number_of_flakes):
+        i.fall
 
 
 
@@ -65,8 +72,8 @@ while not gameOver:
     # Here, we clear the screen to white. Don't put other drawing commands
     # above this, or they will be erased with this command.
 
-    for i in range(snow_rows):
-        pygame.draw.rect(screen, WHITE, [snow_arr[i].x,snow_arr[i].y,snow_arr[i].size,snow_arr[i].size])
+    for i in flakes:
+        flakes.draw
 
     # If you want a background image, replace this clear with blit'ing the
     # background image.
