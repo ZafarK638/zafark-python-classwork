@@ -18,15 +18,32 @@ class Animal:
     #end of method
 #end of class
 
-myAnimal = Animal("Unknown","Rizzly Bear","Neon Green")
-print(f"Type: {myAnimal.myType} Name: {myAnimal.myName} Colour: {myAnimal.myColour}")
-myAnimal.makeNoise
+
 
 
 class Dog(Animal):
-    pass
+    def makeNoise(self):
+        print("Woof")
 #end of class
 
-myDog = Dog("MurderKing","Anthropomorphic hybrid", "Bright Yellow")
-print(f"Type: {myDog.myType} Name: {myDog.myName} Colour: {myDog.myColour}")
-print("End")
+class Cat(Animal):
+    def makeNoise(self):
+        print("Meow")
+#end of class
+
+
+Pet = []
+
+for i in ['cat','dog','cat','cat','dog']:
+    match i:
+        case 'cat':
+            Pet.append(Cat("mammal","Name","Species"))
+        case 'dog':
+            Pet.append(Dog("mammal","Name","Species"))
+        #end match
+    #next animal
+
+
+for i in Pet:
+    i.makeNoise
+#next animal
