@@ -25,12 +25,14 @@ class Dog(Animal):
     def makeNoise(self,barkTimes):
         for _  in range(barkTimes):
             print("Woof!")
-        # next _#end of class
+        #next _
+#end of class
 
 class Cat(Animal):
     def makeNoise(self,meowTimes):
         for _  in range(meowTimes):
             print("Meow!")
+        #next _
 #end of class
 
 
