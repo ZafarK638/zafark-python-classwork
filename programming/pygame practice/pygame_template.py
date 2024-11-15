@@ -9,7 +9,9 @@ RED = (255, 0, 0)
 pygame.init()
 
 # Set the width and height of the screen [width, height]
-size = (700, 500)
+width = 700
+height = 500
+size = (width,height)
 screen = pygame.display.set_mode(size)
 
 pygame.display.set_caption("My Game")
