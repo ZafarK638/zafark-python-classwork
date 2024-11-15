@@ -9,6 +9,19 @@ RED = (255, 0, 0)
 
 pygame.init()
 
+class Bullet:
+    def __init__(self,x,y,colour) -> None:
+        self.x=x
+        self.y=y
+        self.colour=colour
+    #end constructor
+
+    def __repr__(self) -> str:
+        return f'x:{self.x},y:{self.y},colour:{self.colour}'
+#end class
+
+my_bullet = Bullet(10,10,RED)
+
 class Block(pygame.sprite.Sprite):
     def __init__(self,colour,width,height) -> None:
         super().__init__()
@@ -57,6 +70,8 @@ while not gameOver:
             gameOver = True
 
     # --- Game logic should go here
+
+
 
     # --- Screen-clearing code goes here
 
