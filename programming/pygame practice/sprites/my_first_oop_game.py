@@ -1,4 +1,5 @@
 import pygame
+from pygame.sprite import _Group
 
 # Define some colors
 BLACK = (0, 0, 0)
@@ -9,7 +10,11 @@ RED = (255, 0, 0)
 pygame.init()
 
 class Block(pygame.sprite.Sprite):
-    
+    def __init__(self,colour,width,height) -> None:
+        super().__init__()
+        self.image = pygame.Surface([width, height])
+        self.image.fill(colour)
+        self.rect = self.image.get_rect()
 
 # Set the width and height of the screen [width, height]
 width = 700
@@ -21,6 +26,9 @@ pygame.display.set_caption("My Game")
 
 # Loop until the user clicks the close button.
 gameOver = False
+
+block_list = pygame.sprite.Group()
+all_sprites_list = pygame.sprite.Group()
 
 # Used to manage how fast the screen updates
 clock = pygame.time.Clock()
