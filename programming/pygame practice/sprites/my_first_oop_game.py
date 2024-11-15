@@ -1,5 +1,5 @@
 import pygame
-from pygame.sprite import _Group
+import random
 
 # Define some colors
 BLACK = (0, 0, 0)
@@ -30,6 +30,22 @@ gameOver = False
 block_list = pygame.sprite.Group()
 all_sprites_list = pygame.sprite.Group()
 
+for i in range(50):
+    # This represents a block
+    block = Block(BLACK, 20, 15)
+ 
+    # Set a random location for the block
+    block.rect.x = random.randrange(width)
+    block.rect.y = random.randrange(height)
+ 
+    # Add the block to the list of objects
+    block_list.add(block)
+    all_sprites_list.add(block)
+    	
+# Create a RED player block
+player = Block(RED, 20, 15)
+all_sprites_list.add(player)
+
 # Used to manage how fast the screen updates
 clock = pygame.time.Clock()
 
@@ -53,8 +69,12 @@ while not gameOver:
 
     # --- Drawing code should go here
 
+    all_sprites_list.draw(screen)
+
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
+
+    
 
     # --- Limit to 60 frames per second
     clock.tick(60)
