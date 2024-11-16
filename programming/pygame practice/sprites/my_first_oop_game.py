@@ -28,6 +28,13 @@ class Block(pygame.sprite.Sprite):
         self.image = pygame.Surface([width, height])
         self.image.fill(colour)
         self.rect = self.image.get_rect()
+    #end method
+
+    def update(self):
+        """ Called each frame. """
+        # Move block down one pixel
+        self.rect.y += 1
+    #end method
 
 # Set the width and height of the screen [width, height]
 width = 700
@@ -62,6 +69,8 @@ all_sprites_list.add(player)
 # Used to manage how fast the screen updates
 clock = pygame.time.Clock()
 
+score = 0
+
 # -------- Main Program Loop -----------
 while not gameOver:
     # --- Main event loop
@@ -83,6 +92,22 @@ while not gameOver:
     screen.fill(WHITE)
 
     # --- Drawing code should go here
+
+
+    # Get the current mouse position. This returns the position
+    # as a list of two numbers.
+    pos = pygame.mouse.get_pos()
+    
+    # Fetch the x and y out of the list,
+    # just like we'd fetch letters out of a string.
+    # Set the player object to the mouse location
+    player.rect.x = pos[0]
+    player.rect.y = pos[1]
+
+    blocks_hit_list = pygame.sprite.spritecollide(player, block_list, True)
+    for block in blocks_hit_list:
+        score +=1
+        print(score)
 
     all_sprites_list.draw(screen)
 
