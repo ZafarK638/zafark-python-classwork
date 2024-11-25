@@ -1,6 +1,6 @@
 class myStrStack:
     def __init__(self,size) -> None:
-        self.sp = 1
+        self.sp = -1
         self.max = size
         self.data = ["" for _ in range(size)]
     #end constructor
@@ -10,8 +10,8 @@ class myStrStack:
     #end method
 
     def isFull (self) -> bool:
+        
         return self.sp + 1 == self.max
-
     #end method
 
     def pushStack (self,item) -> None:
@@ -37,7 +37,15 @@ class myStrStack:
         else:
             print("Stack Empty")
     #end method
+
+    def __repr__(self) -> str:
+        return ":".join(self.data)
 #end class
 
 len_stack = int(input("Input an integer: "))
 stack1 = myStrStack(len_stack)
+
+for c in "aibohphobia":
+    stack1.pushStack(c)
+
+print(stack1)
