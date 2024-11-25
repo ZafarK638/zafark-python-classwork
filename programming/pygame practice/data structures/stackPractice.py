@@ -10,7 +10,6 @@ class myStrStack:
     #end method
 
     def isFull (self) -> bool:
-
         return self.sp + 1 == self.max
     #end method
 
