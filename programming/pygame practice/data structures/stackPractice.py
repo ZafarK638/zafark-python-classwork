@@ -10,7 +10,7 @@ class myStrStack:
     #end method
 
     def isFull (self) -> bool:
-        
+
         return self.sp + 1 == self.max
     #end method
 
@@ -39,7 +39,7 @@ class myStrStack:
     #end method
 
     def __repr__(self) -> str:
-        return ":".join(self.data)
+        return " | ".join(self.data)
 #end class
 
 len_stack = int(input("Input an integer: "))
