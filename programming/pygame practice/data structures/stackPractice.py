@@ -1,6 +1,8 @@
-class myStack:
-    def __init__(self,) -> None:
-        pass
+class myStrStack:
+    def __init__(self,size) -> None:
+        self.sp = 1
+        self.max = size
+        self.data = ["" for _ in range(size)]
     #end constructor
 
     def popStack (self):
