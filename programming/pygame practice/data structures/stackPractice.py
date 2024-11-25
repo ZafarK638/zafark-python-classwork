@@ -1,5 +1,5 @@
 class myStrStack:
-    def __init__(self,size) -> None:
+    def __init__(self,size,front,back) -> None:
         self.sp = 1
         self.max = size
         self.data = ["" for _ in range(size)]
