@@ -14,7 +14,7 @@ class myStrStack:
     #end method
 
     def pushStack (self,item) -> None:
-        if not self.isFull:
+        if not self.isFull():
             self.sp += 1
             self.data[self.sp] = item
         else:
@@ -22,7 +22,7 @@ class myStrStack:
     #end method
 
     def popStack (self) -> None:
-        if not self.isEmpty:
+        if not self.isEmpty():
             self.data[self.sp] = ""
             self.sp += -1
             return self.data[self.sp + 1]
