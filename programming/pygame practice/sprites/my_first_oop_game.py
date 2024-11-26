@@ -79,7 +79,7 @@ height = 700
 size = (width,height)
 screen = pygame.display.set_mode(size)
 
-pygame.display.set_caption("My Game")
+pygame.display.set_caption("OOP practise")
 
 # Loop until the user clicks the close button.
 gameOver = False
