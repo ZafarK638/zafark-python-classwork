@@ -18,3 +18,15 @@ class Building:
         #end if-else statement
     #end method
 #end class
+
+class House(Building):
+    #attributes
+    def __init__(self, pHeight, pWidth, pFloors,pBathrooms,pBedrooms) -> None:
+        super().__init__(pHeight, pWidth, pFloors)
+        self.__bathrooms = pBathrooms
+        self.__bedrooms = pBedrooms
+    #end constructor
+#end class
+
+myBuilding = Building(10,5,3)
+print(myBuilding._Building__height)
