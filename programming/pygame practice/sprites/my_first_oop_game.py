@@ -9,18 +9,21 @@ RED = (255, 0, 0)
 
 pygame.init()
 
-class Bullet:
-    def __init__(self,x,y,colour) -> None:
-        self.x=x
-        self.y=y
-        self.colour=colour
-    #end constructor
 
-    def __repr__(self) -> str:
-        return f'x:{self.x},y:{self.y},colour:{self.colour}'
-#end class
-
-my_bullet = Bullet(10,10,RED)
+class Bullet(pygame.sprite.Sprite):
+    """ This class represents the bullet . """
+    def __init__(self):
+        # Call the parent class (Sprite) constructor
+        super().__init__()
+ 
+        self.image = pygame.Surface([4, 10])
+        self.image.fill(BLACK)
+ 
+        self.rect = self.image.get_rect()
+ 
+    def update(self):
+        """ Move the bullet. """
+        self.rect.y -= 3
 
 class Block(pygame.sprite.Sprite):
     def __init__(self,colour,width,height) -> None:
@@ -70,7 +73,7 @@ class Player(Block):
         # just like we'd fetch letters out of a string.
         # Set the player object to the mouse location
         self.rect.x = pos[0]
-        self.rect.y = pos[1]
+        self.rect.y = height-50
 
 
 # Set the width and height of the screen [width, height]
@@ -87,20 +90,22 @@ gameOver = False
 block_list = pygame.sprite.Group()
 all_sprites_list = pygame.sprite.Group()
 
+bullet_list = pygame.sprite.Group()
+
 for i in range(50):
     # This represents a block
     block = Block(BLACK, 20, 15)
  
     # Set a random location for the block
     block.rect.x = random.randrange(width)
-    block.rect.y = random.randrange(height)
+    block.rect.y = random.randrange(0,height-100)
 
     block.change_x = random.randrange(-3, 4)
     block.change_y = random.randrange(-3, 4)
     block.left_boundary = 0
     block.top_boundary = 0
     block.right_boundary = width
-    block.bottom_boundary = height
+    block.bottom_boundary = height-100
  
     # Add the block to the list of objects
     block_list.add(block)
@@ -122,19 +127,36 @@ while not gameOver:
         if event.type == pygame.QUIT:
             gameOver = True
 
+        elif event.type == pygame.K_SPACE:
+            #fire a bullet when button pressed
+            bullet = Bullet()
+            #set bullet location
+            bullet.rect.x = player.rect.x
+            bullet.rect.y = player.rect.y
+            all_sprites_list.add(bullet)
+            bullet_list.add(bullet)
+
+
     # Call the update() method for all blocks in the block_list
     block_list.update()
 
-    # See if the player block has collided with anything.
-    blocks_hit_list = pygame.sprite.spritecollide(player, block_list, False)
-    
-    # Check the list of collisions.
-    for block in blocks_hit_list:
-        score += 1
-        print(score)
-    
-        # Reset block to the top of the screen to fall again.
-        block.reset_pos()
+    # Calculate mechanics for each bullet
+    for bullet in bullet_list:
+ 
+        # See if it hit a block
+        block_hit_list = pygame.sprite.spritecollide(bullet, block_list, True)
+ 
+        # For each block hit, remove the bullet and add to the score
+        for block in block_hit_list:
+            bullet_list.remove(bullet)
+            all_sprites_list.remove(bullet)
+            score += 1
+            print(score)
+ 
+        # Remove the bullet if it flies up off the screen
+        if bullet.rect.y < -10:
+            bullet_list.remove(bullet)
+            all_sprites_list.remove(bullet)
 
     # --- Game logic should go here
 
@@ -160,7 +182,7 @@ while not gameOver:
     # just like we'd fetch letters out of a string.
     # Set the player object to the mouse location
     player.rect.x = pos[0]
-    player.rect.y = pos[1]
+    player.rect.y = height-50
 
     blocks_hit_list = pygame.sprite.spritecollide(player, block_list, True)
     for block in blocks_hit_list:
