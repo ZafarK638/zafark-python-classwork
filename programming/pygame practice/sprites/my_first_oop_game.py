@@ -12,18 +12,18 @@ pygame.init()
 
 class Bullet(pygame.sprite.Sprite):
     """ This class represents the bullet . """
-    def __init__(self):
+    def __init__(self,colour,width,height):
         # Call the parent class (Sprite) constructor
         super().__init__()
  
-        self.image = pygame.Surface([4, 10])
-        self.image.fill(BLACK)
+        self.image = pygame.Surface([width, height])
+        self.image.fill(colour)
  
         self.rect = self.image.get_rect()
  
     def update(self):
         """ Move the bullet. """
-        self.rect.y -= 3
+        self.rect.y += -10
 
 class Block(pygame.sprite.Sprite):
     def __init__(self,colour,width,height) -> None:
@@ -127,18 +127,15 @@ while not gameOver:
         if event.type == pygame.QUIT:
             gameOver = True
 
-        elif event.type == pygame.K_SPACE:
-            #fire a bullet when button pressed
-            bullet = Bullet()
-            #set bullet location
-            bullet.rect.x = player.rect.x
-            bullet.rect.y = player.rect.y
-            all_sprites_list.add(bullet)
-            bullet_list.add(bullet)
-
-
-    # Call the update() method for all blocks in the block_list
-    block_list.update()
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                #fire a bullet when button pressed
+                bullet = Bullet(GREEN,5,5)
+                #set bullet location
+                bullet.rect.x = player.rect.x
+                bullet.rect.y = player.rect.y
+                all_sprites_list.add(bullet)
+                bullet_list.add(bullet)
 
     # Calculate mechanics for each bullet
     for bullet in bullet_list:
@@ -157,6 +154,11 @@ while not gameOver:
         if bullet.rect.y < -10:
             bullet_list.remove(bullet)
             all_sprites_list.remove(bullet)
+
+    # Call the update() method for all blocks in the block_list
+    block_list.update()
+    for bullet in bullet_list:
+        bullet.update()
 
     # --- Game logic should go here
 
