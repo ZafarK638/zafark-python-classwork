@@ -94,7 +94,7 @@ bullet_list = pygame.sprite.Group()
 
 for i in range(50):
     # This represents a block
-    block = Block(BLACK, 20, 15)
+    block = Block(GREEN, 20, 15)
  
     # Set a random location for the block
     block.rect.x = random.randrange(width)
@@ -130,7 +130,7 @@ while not gameOver:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
                 #fire a bullet when button pressed
-                bullet = Bullet(GREEN,5,5)
+                bullet = Bullet(BLACK,5,5)
                 #set bullet location
                 bullet.rect.x = player.rect.x
                 bullet.rect.y = player.rect.y
