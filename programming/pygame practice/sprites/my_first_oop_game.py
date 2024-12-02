@@ -11,7 +11,6 @@ pygame.init()
 
 
 class Bullet(pygame.sprite.Sprite):
-    """ This class represents the bullet . """
     def __init__(self,colour,width,height):
         # Call the parent class (Sprite) constructor
         super().__init__()
@@ -22,7 +21,7 @@ class Bullet(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
  
     def update(self):
-        """ Move the bullet. """
+        #move the bullet
         self.rect.y += -10
 
 class Block(pygame.sprite.Sprite):
@@ -42,14 +41,11 @@ class Block(pygame.sprite.Sprite):
     #end method
 
     def reset_pos(self):
-        """ Reset position to the top of the screen, at a random x location.
-        Called by update() or the main program loop if there is a collision.
-        """
+        # Reset position to the top of the screen, at a random x location
         self.rect.y = random.randrange(-300, -20)
         self.rect.x = random.randrange(0, width)
     
     def update(self):
-        """ Called each frame. """
         self.rect.x += self.change_x
         self.rect.y += self.change_y
  
@@ -61,16 +57,12 @@ class Block(pygame.sprite.Sprite):
     #end method
 
 class Player(Block):
-    """ The player class derives from Block, but overrides the 'update'
-    functionality with new a movement function that will move the block
-    with the mouse. """
+
     def update(self):
-        # Get the current mouse position. This returns the position
-        # as a list of two numbers.
+        # Get the current mouse position. 
         pos = pygame.mouse.get_pos()
  
         # Fetch the x and y out of the list,
-        # just like we'd fetch letters out of a string.
         # Set the player object to the mouse location
         self.rect.x = pos[0]
         self.rect.y = height-50
@@ -162,26 +154,16 @@ while not gameOver:
 
     # --- Game logic should go here
 
-
-
     # --- Screen-clearing code goes here
 
-    # Here, we clear the screen to white. Don't put other drawing commands
-    # above this, or they will be erased with this command.
-
-    # If you want a background image, replace this clear with blit'ing the
-    # background image.
     screen.fill(WHITE)
 
     # --- Drawing code should go here
 
-
-    # Get the current mouse position. This returns the position
-    # as a list of two numbers.
+    # Get the current mouse position. 
     pos = pygame.mouse.get_pos()
     
     # Fetch the x and y out of the list,
-    # just like we'd fetch letters out of a string.
     # Set the player object to the mouse location
     player.rect.x = pos[0]
     player.rect.y = height-50
@@ -196,10 +178,8 @@ while not gameOver:
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
 
-    
-
     # --- Limit to 60 frames per second
     clock.tick(60)
 
-# Close the window and quit.
+# Close the window and quit.                    
 pygame.quit()
