@@ -1,5 +1,6 @@
 import pygame
 import random
+import math
 
 # Define some colors
 BLACK = (0, 0, 0)
@@ -8,7 +9,6 @@ GREEN = (0, 255, 0)
 RED = (255, 0, 0)
 
 pygame.init()
-
 
 class Bullet(pygame.sprite.Sprite):
     def __init__(self,colour,width,height):
@@ -60,7 +60,7 @@ class Player(Block):
 
     def update(self):
         # Get the current mouse position. 
-        pos = pygame.mouse.get_pos()
+        pos = width/2,height,2
  
         # Fetch the x and y out of the list,
         # Set the player object to the mouse location
@@ -75,6 +75,11 @@ size = (width,height)
 screen = pygame.display.set_mode(size)
 
 pygame.display.set_caption("OOP practise")
+
+pos = width/2
+playerSpeed = 10
+move_right = False
+move_left = False
 
 # Loop until the user clicks the close button.
 gameOver = False
@@ -128,6 +133,16 @@ while not gameOver:
                 bullet.rect.y = player.rect.y
                 all_sprites_list.add(bullet)
                 bullet_list.add(bullet)
+            if event.key == pygame.K_RIGHT:
+                move_right = True
+            if event.key == pygame.K_LEFT:
+                move_left = True
+
+        if event.type == pygame.KEYUP:
+            if event.key == pygame.K_RIGHT:
+                move_right = False
+            if event.key == pygame.K_LEFT:
+                move_left = False
 
     # Calculate mechanics for each bullet
     for bullet in bullet_list:
@@ -154,18 +169,21 @@ while not gameOver:
 
     # --- Game logic should go here
 
+    if move_right:
+        pos += playerSpeed
+
+    if move_left:
+        pos -= playerSpeed
+
     # --- Screen-clearing code goes here
 
     screen.fill(WHITE)
 
     # --- Drawing code should go here
-
-    # Get the current mouse position. 
-    pos = pygame.mouse.get_pos()
     
     # Fetch the x and y out of the list,
     # Set the player object to the mouse location
-    player.rect.x = pos[0]
+    player.rect.x = pos
     player.rect.y = height-50
 
     blocks_hit_list = pygame.sprite.spritecollide(player, block_list, True)
