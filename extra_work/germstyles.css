@@ -1,0 +1,62 @@
+@charset "utf-8"
+
+body
+{
+    margin: 0px;
+    padding: 0px;
+    background-color: white;
+    font-family: Georgia, Times New Roman, "serif";
+    font-size: 18px;
+    text-align: center;
+}
+
+#page
+{
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 30px;
+    background-color: #cc6633;
+}
+
+#header
+{
+    padding: 5px;
+    background-color: white;
+    text-align: center;
+}
+
+#right-column
+{
+    float: right;
+    width: 500px;
+    text-align: left;
+}
+
+.list
+{
+    color: #ffcc66
+}
+
+img
+{
+    border: double 10px white;
+}
+
+h1
+{
+    font-size:36px; 
+    color: #cc6633;
+    margin: 0px;
+    padding: 5px;
+}
+
+h2
+{
+    font-size: 30px;
+    color: #ffcc66;
+}
+
+h3
+{
+    color: white;
+}
