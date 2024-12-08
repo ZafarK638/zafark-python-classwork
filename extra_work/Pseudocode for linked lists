@@ -1,0 +1,36 @@
+// Inserting an item
+
+Procedure AddItem(newName)
+// check if list is full and if so, print error message
+    if nextfree == null then
+        print("List full")
+    else
+        Names[nextfree].name = newName
+
+        if start == null then
+            temp Names[nextfree].pointer
+            start = nextfree
+            nextfree = temp
+        else
+            p = start
+            if newName < Names[p] then
+                Names[nextfree].pointer = start
+                start = nextfree
+            else
+                placeFound = flase
+                while Names[p].pointer != null and placeFound = false
+                    if newName >= Names[Names[p].pointer].name then
+                        p = Names[p].pointer
+                    else
+                        placefound = True
+                    endif
+                endwhile
+
+                temp = nextfree
+                nextfree = Names[temp].pointer
+                Names[temp].pointer = Names[p].pointer 
+                Names[p].pointer = temp
+            endif
+        endif
+    endif
+endprocedure
