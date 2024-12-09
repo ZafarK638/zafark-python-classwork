@@ -5,8 +5,7 @@ WHITE = (255, 255, 255)
 BLUE = (0, 0, 255)
 GREEN = (0, 255, 0)
 RED = (255, 0, 0)
-PURPLE = (255, 0, 255)
- 
+PURPLE = (128, 0, 128)
  
 class Wall(pygame.sprite.Sprite):
  
@@ -158,7 +157,6 @@ class Room3(Room):
  
 def main():
  
-    # Call this function so the Pygame library can initialize itself
     pygame.init()
  
     # Create an 800x600 sized screen
