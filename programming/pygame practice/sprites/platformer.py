@@ -204,7 +204,8 @@ def main():
  
     # Create all the levels
     level_list = []
-    level_list.append( Level_01(player) )
+    level1 = Level_01(player)
+    level_list.append(level1)
  
     # Set the current level
     current_level_no = 0
@@ -212,22 +213,22 @@ def main():
  
     active_sprite_list = pygame.sprite.Group()
     player.level = current_level
- 
+
     player.rect.x = 340
     player.rect.y = SCREEN_HEIGHT - player.rect.height
     active_sprite_list.add(player)
- 
+
     # Loop until the user clicks the close button.
-    done = False
+    gameOver = False
  
     # Used to manage how fast the screen updates
     clock = pygame.time.Clock()
  
     # -------- Main Program Loop -----------
-    while not done:
+    while not gameOver:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                done = True
+                gameOver = True
  
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
