@@ -4,9 +4,9 @@ import math
 import pygame
  
 # Define some colors
-black = (0, 0, 0)
-white = (255, 255, 255)
-blue = (0, 0, 255)
+BLACK = (0, 0, 0)
+WHITE = (255, 255, 255)
+BLUE = (0, 0, 255)
  
 # Size of break-out blocks
 block_width = 23
@@ -60,7 +60,7 @@ class Ball(pygame.sprite.Sprite):
         self.image = pygame.Surface([self.width, self.height])
  
         # Color the ball
-        self.image.fill(white)
+        self.image.fill(WHITE)
  
         # Get a rectangle object that shows where our image is
         self.rect = self.image.get_rect()
@@ -117,7 +117,7 @@ class Player(pygame.sprite.Sprite):
         self.width = 75
         self.height = 15
         self.image = pygame.Surface([self.width, self.height])
-        self.image.fill((white))
+        self.image.fill((WHITE))
  
         # Make our top-left corner the passed-in location.
         self.rect = self.image.get_rect()
@@ -182,7 +182,7 @@ for row in range(5):
     # 32 columns of blocks
     for column in range(0, blockcount):
         # Create a block (color,x,y)
-        block = Block(blue, column * (block_width + 2) + 1, top)
+        block = Block(BLUE, column * (block_width + 2) + 1, top)
         blocks.add(block)
         allsprites.add(block)
     # Move the top of the next row down
@@ -204,7 +204,7 @@ while not exit_program:
     clock.tick(30)
  
     # Clear the screen
-    screen.fill(black)
+    screen.fill(BLACK)
  
     # Process the events in the game
     for event in pygame.event.get():
@@ -220,7 +220,7 @@ while not exit_program:
  
     # If we are done, print game over
     if game_over:
-        text = font.render("Game Over", True, white)
+        text = font.render("Game Over", True, WHITE)
         textpos = text.get_rect(centerx=background.get_width()/2)
         textpos.top = 300
         screen.blit(text, textpos)
