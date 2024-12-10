@@ -151,9 +151,9 @@ class Level_01(Level):
         Level.__init__(self, player)
  
         # Array with width, height, x, and y of platform
-        level = [[210, 35, 500, 500],
-                 [210, 35, 200, 400],
-                 [210, 35, 600, 300],
+        level = [[210, 15, 500, 500],
+                 [210, 15, 200, 400],
+                 [210, 15, 600, 300],
                  ]
  
         # Go through the array above and add platforms
