@@ -6,6 +6,9 @@ BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 GREEN = (0, 255, 0)
 RED = (255, 0, 0)
+BLUE = (0, 0, 255)
+LIGHT_GRAY = (200, 200, 200)
+DARK_GRAY = (50, 50, 50)
 
 pygame.init()
 
@@ -20,6 +23,7 @@ pygame.display.set_caption("Factorial Calculator")
 # Fonts
 font = pygame.font.Font(None, 36)
 input_font = pygame.font.Font(None, 48)
+title_font = pygame.font.Font(None, 64)
 
 # Input and output variables
 input_text = ""
@@ -78,15 +82,22 @@ while not gameOver:
             else:
                 input_text += event.unicode
 
-    # Clear the screen
-    screen.fill(WHITE)
+    # Clear the screen with a gradient background
+    for y in range(height):
+        color = (LIGHT_GRAY[0] - y // 10, LIGHT_GRAY[1] - y // 10, LIGHT_GRAY[2] - y // 10)
+        pygame.draw.line(screen, color, (0, y), (width, y))
+
+    # Draw title
+    title_surface = title_font.render("Factorial Calculator", True, BLUE)
+    screen.blit(title_surface, (width // 2 - title_surface.get_width() // 2, 20))
 
     # Render input box
     input_box = pygame.Rect(150, 150, 400, 50)
+    pygame.draw.rect(screen, DARK_GRAY, input_box)
     pygame.draw.rect(screen, BLACK, input_box, 2)
 
     # Render text
-    input_surface = input_font.render(input_text, True, BLACK)
+    input_surface = input_font.render(input_text, True, WHITE)
     wrapped_result = wrap_text(result_text, font, 500)
 
     # Blit text and input box
@@ -99,7 +110,7 @@ while not gameOver:
     instructions = wrap_text("Enter a number and press Enter to calculate its factorial.", font, 600)
     for i, line in enumerate(instructions):
         instruction_surface = font.render(line, True, BLACK)
-        screen.blit(instruction_surface, (50, 50 + i * 30))
+        screen.blit(instruction_surface, (50, 100 + i * 30))
 
     # Update the screen
     pygame.display.flip()
