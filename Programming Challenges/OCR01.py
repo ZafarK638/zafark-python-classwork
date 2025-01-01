@@ -59,13 +59,13 @@ def wrap_text(text, font, max_width):
     return lines
 
 # Main Program Loop
-gameOver = False
+done = False
 clock = pygame.time.Clock()
 
-while not gameOver:
+while not done:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            gameOver = True
+            done = True
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RETURN:  # Calculate factorial
                 try:
